@@ -1,13 +1,11 @@
 Option Explicit
 
-Dim wsMAWBConfig As Worksheet
-Dim wsMAWB As Worksheet
-
 Sub Main()
     On Error GoTo ErrorHandler
 
     Set wsMAWBConfig = ThisWorkbook.Sheets("MAWB Config")
     Set wsMAWB = ThisWorkbook.Sheets("MAWB")
+    Set wsSHP = ThisWorkbook.Sheets("SHP")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -27,13 +25,15 @@ Sub Main()
         Exit Sub
     End If
 
-    ' Main procedure listing.
+    ' Main procedure.
     Call Read_SetMAWBnum(arr, startRow)
     Call AirlineName
+    Call Shipper(arr, startRow)
 
     ' Clean up.
     Set wsMAWBConfig = Nothing
     Set wsMAWB = Nothing
+    Set wsSHP = Nothing
 
     Exit Sub
 
@@ -42,12 +42,5 @@ ErrorHandler:
     ' Clean up in case of error
     Set wsMAWBConfig = Nothing
     Set wsMAWB = Nothing
-End Sub
-
-
-
-Sub AirlineName()
-    Dim Airline As String
-    Airline = wsMAWBConfig.Cells(3, 2).Value    '=Range("B3")
-    wsMAWB.Cells(3, LetterToNumber("Z")).Value = Airline
+    Set wsSHP = Nothing
 End Sub
