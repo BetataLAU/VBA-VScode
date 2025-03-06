@@ -7,6 +7,7 @@ Sub Main()
     Set wsMAWB = ThisWorkbook.Sheets("MAWB")
     Set wsSHP = ThisWorkbook.Sheets("SHP")
     Set wsCNE = ThisWorkbook.Sheets("CNE")
+    Set wsNTY = ThisWorkbook.Sheets("NTY")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -34,12 +35,15 @@ Sub Main()
         Call AirlineName
         Call Shipper(arr, currentRow)
         Call Consignee(arr, currentRow)
+        Call Notify(arr, currentRow)
     Next currentRow
 
     ' Clean up.
     Set wsMAWBConfig = Nothing
     Set wsMAWB = Nothing
     Set wsSHP = Nothing
+    Set wsCNE = Nothing
+    Set wsNTY = Nothing
 
     Exit Sub
 
@@ -49,4 +53,6 @@ ErrorHandler:
     Set wsMAWBConfig = Nothing
     Set wsMAWB = Nothing
     Set wsSHP = Nothing
+    Set wsCNE = Nothing
+    Set wsNTY = Nothing
 End Sub
