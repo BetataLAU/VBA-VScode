@@ -11,24 +11,28 @@ Sub Main()
     Dim rng As Range
     Dim arr As Variant
     Dim startRow As Long, endRow As Long
+    Dim currentRow As Long
 
     ' Check if a range is selected
     If TypeName(Selection) = "Range" Then
         startRow = Selection.Row
         endRow = Selection.Row + Selection.Rows.Count - 1
-        
-        ' Define the range from column A to Y for the selected rows
-        Set rng = wsMAWBConfig.Range(wsMAWBConfig.Cells(startRow, 1), wsMAWBConfig.Cells(endRow, 25))
-        arr = rng.Value
     Else
         MsgBox "Please select a range first."
         Exit Sub
     End If
 
-    ' Main procedure.
-    Call Read_SetMAWBnum(arr, startRow)
-    Call AirlineName
-    Call Shipper(arr, startRow)
+    ' Loop through each row in the selected range
+    For currentRow = startRow To endRow
+        ' Define the range for the current row from column A to Y
+        Set rng = wsMAWBConfig.Range(wsMAWBConfig.Cells(currentRow, 1), wsMAWBConfig.Cells(currentRow, 25))
+        arr = rng.Value
+
+        ' Main procedure for the current row
+        Call Read_SetMAWBnum(arr, currentRow)
+        Call AirlineName
+        Call Shipper(arr, currentRow)
+    Next currentRow
 
     ' Clean up.
     Set wsMAWBConfig = Nothing
