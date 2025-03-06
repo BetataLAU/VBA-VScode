@@ -8,7 +8,7 @@ Sub Main()
     Set wsSHP = ThisWorkbook.Sheets("SHP")
     Set wsCNE = ThisWorkbook.Sheets("CNE")
     Set wsNTY = ThisWorkbook.Sheets("NTY")
-    Set wsACC = ThisWorkbook.Sheets("ACC") ' Assuming wsACC is the worksheet for accounting info
+    Set wsACC = ThisWorkbook.Sheets("ACC")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range

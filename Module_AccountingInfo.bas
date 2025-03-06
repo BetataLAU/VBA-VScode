@@ -20,7 +20,7 @@ Sub AccountingInfo(ByRef arr As Variant, startRow As Long)
         ' Get the accounting details from column B
         accountingDetails = found.Offset(0, 1).Value
         ' Put the accounting details in the merged cell U14
-        wsMAWB.Range("U14").Value = accountingDetails
+        wsMAWB.Range("U14").Value = vbNewLine & accountingDetails
     Else
         wsMAWB.Range("U14").Value = vbNewLine & "FREIGHT PREPAID"
     End If
