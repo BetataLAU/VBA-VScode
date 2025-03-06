@@ -6,6 +6,7 @@ Sub Main()
     Set wsMAWBConfig = ThisWorkbook.Sheets("MAWB Config")
     Set wsMAWB = ThisWorkbook.Sheets("MAWB")
     Set wsSHP = ThisWorkbook.Sheets("SHP")
+    Set wsCNE = ThisWorkbook.Sheets("CNE")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -32,6 +33,7 @@ Sub Main()
         Call Read_SetMAWBnum(arr, currentRow)
         Call AirlineName
         Call Shipper(arr, currentRow)
+        Call Consignee(arr, currentRow)
     Next currentRow
 
     ' Clean up.
