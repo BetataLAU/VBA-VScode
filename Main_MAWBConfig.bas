@@ -38,6 +38,7 @@ Sub Main()
         Call Consignee(arr, currentRow)
         Call Notify(arr, currentRow)
         Call AccountingInfo(arr, currentRow)
+        Call IssuingCarrierInfo
     Next currentRow
 
     ' Clean up.

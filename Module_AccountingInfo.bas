@@ -8,8 +8,8 @@ Sub AccountingInfo(ByRef arr As Variant, startRow As Long)
     ' Read the accounting code from the "S" column (19th column in the array)
     accountingCode = arr(1, 19)
 
-    ' Clear the content of the merged cell A50 before assigning the accounting details
-    With wsMAWB.Range("A50").MergeArea
+    ' Clear the content of the merged cell U14 before assigning the accounting details
+    With wsMAWB.Range("U14").MergeArea
         .ClearContents
     End With
 
@@ -19,10 +19,9 @@ Sub AccountingInfo(ByRef arr As Variant, startRow As Long)
     If Not found Is Nothing Then
         ' Get the accounting details from column B
         accountingDetails = found.Offset(0, 1).Value
-        ' Put the accounting details in the merged cell A50
-        wsMAWB.Range("A50").Value = accountingDetails
+        ' Put the accounting details in the merged cell U14
+        wsMAWB.Range("U14").Value = accountingDetails
     Else
-        ' Add a line before assigning the value "FREIGHT PREPAID"
-        wsMAWB.Range("A50").Value = vbNewLine & "FREIGHT PREPAID"
+        wsMAWB.Range("U14").Value = vbNewLine & "FREIGHT PREPAID"
     End If
 End Sub
