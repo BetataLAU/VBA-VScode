@@ -8,6 +8,7 @@ Sub Main()
     Set wsSHP = ThisWorkbook.Sheets("SHP")
     Set wsCNE = ThisWorkbook.Sheets("CNE")
     Set wsNTY = ThisWorkbook.Sheets("NTY")
+    Set wsACC = ThisWorkbook.Sheets("ACC") ' Assuming wsACC is the worksheet for accounting info
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -36,6 +37,7 @@ Sub Main()
         Call Shipper(arr, currentRow)
         Call Consignee(arr, currentRow)
         Call Notify(arr, currentRow)
+        Call AccountingInfo(arr, currentRow)
     Next currentRow
 
     ' Clean up.
@@ -44,6 +46,7 @@ Sub Main()
     Set wsSHP = Nothing
     Set wsCNE = Nothing
     Set wsNTY = Nothing
+    Set wsACC = Nothing
 
     Exit Sub
 
@@ -55,4 +58,5 @@ ErrorHandler:
     Set wsSHP = Nothing
     Set wsCNE = Nothing
     Set wsNTY = Nothing
+    Set wsACC = Nothing
 End Sub
