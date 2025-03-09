@@ -3,13 +3,15 @@ Option Explicit
 Sub Main()
     On Error GoTo ErrorHandler
 
+    ' Set the worksheets
     Set wsMAWBConfig = ThisWorkbook.Sheets("MAWB Config")
+    Set wsAirlineInfo = ThisWorkbook.Sheets("Airline Info and Remark")
     Set wsMAWB = ThisWorkbook.Sheets("MAWB")
     Set wsSHP = ThisWorkbook.Sheets("SHP")
     Set wsCNE = ThisWorkbook.Sheets("CNE")
     Set wsNTY = ThisWorkbook.Sheets("NTY")
     Set wsACC = ThisWorkbook.Sheets("ACC")
-    set wsDESTIATARate = ThisWorkbook.Sheets("DEST-IATA rate")
+    Set wsDESTIATARate = ThisWorkbook.Sheets("DEST-IATA rate")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -40,17 +42,18 @@ Sub Main()
         Call Notify(arr, currentRow)
         Call AccountingInfo(arr, currentRow)
         Call IssuingCarrierInfo
-        call SetPort(arr, currentRow)
+        Call SetPort(arr, currentRow)
     Next currentRow
 
     ' Clean up.
     Set wsMAWBConfig = Nothing
+    Set wsAirlineInfo = Nothing
     Set wsMAWB = Nothing
     Set wsSHP = Nothing
     Set wsCNE = Nothing
     Set wsNTY = Nothing
     Set wsACC = Nothing
-    set wsDESTIATARate = Nothing
+    Set wsDESTIATARate = Nothing
 
     Exit Sub
 
@@ -58,10 +61,11 @@ ErrorHandler:
     MsgBox "An error occurred: " & Err.Description
     ' Clean up in case of error
     Set wsMAWBConfig = Nothing
+    Set wsAirlineInfo = Nothing
     Set wsMAWB = Nothing
     Set wsSHP = Nothing
     Set wsCNE = Nothing
     Set wsNTY = Nothing
     Set wsACC = Nothing
-    set wsDESTIATARate = Nothing
+    Set wsDESTIATARate = Nothing
 End Sub
