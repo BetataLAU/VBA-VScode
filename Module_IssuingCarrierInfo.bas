@@ -16,18 +16,13 @@ Sub IssuingCarrierInfo()
         .ClearContents
     End With
 
-    ' Get the value from wsMAWBConfig cell B5
+    ' Get the value from wsMAWBConfig cells and put them into wsMAWB cells
     IssuingCarrier = wsMAWBConfig.Cells(5, 2).Value
-    ' Put the value into wsMAWB cell A15 with additional text
     wsMAWB.Cells(15, 1).Value = IssuingCarrier & " / HKG"
 
-    ' Get the value from wsMAWBConfig cell B6
     AgentIATACode = wsMAWBConfig.Cells(6, 2).Value
-    ' Put the value into wsMAWB cell A19
     wsMAWB.Cells(19, 1).Value = AgentIATACode
 
-    ' Get the value from wsMAWBConfig cell B7
     AgentAccountCode = wsMAWBConfig.Cells(7, 2).Value
-    ' Put the value into wsMAWB cell K19
     wsMAWB.Cells(19, 11).Value = AgentAccountCode
 End Sub
