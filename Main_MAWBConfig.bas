@@ -9,6 +9,7 @@ Sub Main()
     Set wsCNE = ThisWorkbook.Sheets("CNE")
     Set wsNTY = ThisWorkbook.Sheets("NTY")
     Set wsACC = ThisWorkbook.Sheets("ACC")
+    set wsDESTIATARate = ThisWorkbook.Sheets("DEST-IATA rate")
 
     ' Define the MAWB every details into an array var.
     Dim rng As Range
@@ -39,6 +40,7 @@ Sub Main()
         Call Notify(arr, currentRow)
         Call AccountingInfo(arr, currentRow)
         Call IssuingCarrierInfo
+        call SetPort(arr, currentRow)
     Next currentRow
 
     ' Clean up.
@@ -48,6 +50,7 @@ Sub Main()
     Set wsCNE = Nothing
     Set wsNTY = Nothing
     Set wsACC = Nothing
+    set wsDESTIATARate = Nothing
 
     Exit Sub
 
@@ -60,4 +63,5 @@ ErrorHandler:
     Set wsCNE = Nothing
     Set wsNTY = Nothing
     Set wsACC = Nothing
+    set wsDESTIATARate = Nothing
 End Sub
